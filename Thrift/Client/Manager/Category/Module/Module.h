@@ -22,4 +22,5 @@ public:
 	virtual auto onDisable(void) -> void {};
 public:
 	virtual auto onRender(MinecraftUIRenderContext*) -> void {};
+	virtual auto onKey(uint64_t, bool) -> void {};
 };
