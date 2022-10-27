@@ -6,7 +6,8 @@ class TestModule : public Module {
 public:
 	TestModule(Category* c) : Module(c, "Test Module") {
 
-		this->isEnabled = true;
+		this->isEnabled = false;
+		this->key = 0x47; /* G */
 
 	};
 public:
