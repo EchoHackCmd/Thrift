@@ -46,6 +46,7 @@ Manager::Manager(Client* c) {
 };
 
 #include "Hook/Hooks/ClientInstance/HookClientInstance.h"
+#include "Hook/Hooks/Key/HookKey.h"
 
 auto Manager::initHooks(void) -> StatusData {
 
@@ -53,6 +54,7 @@ auto Manager::initHooks(void) -> StatusData {
 		return StatusData(MethodStatus::Error, "Failed to Initialize MinHook");
 
 	new Hook_ClientInstance(this);
+	new Hook_Key(this);
 
 	for (auto hook : this->hooks) {
 
