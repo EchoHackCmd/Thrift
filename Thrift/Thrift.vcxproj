@@ -146,6 +146,7 @@
     <ClCompile Include="Client\Manager\Category\Module\Modules\Other\TestModule.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hook.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.cpp" />
+    <ClCompile Include="Client\Manager\Hook\Hooks\Key\HookKey.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
     <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp" />
     <ClCompile Include="Client\SDK\Classes\MinecraftGame.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Client\Manager\Category\Module\Modules\Other\TestModule.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
