@@ -54,6 +54,9 @@
     <ClCompile Include="Client\SDK\Classes\MinecraftUIRenderContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\Manager\Hook\Hooks\Key\HookKey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
