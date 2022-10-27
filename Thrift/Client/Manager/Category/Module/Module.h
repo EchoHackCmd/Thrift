@@ -15,6 +15,8 @@ public:
 	bool isEnabled = false, wasEnabled = false;
 	uint64_t key = NULL;
 public:
+	bool debugState = false;
+public:
 	auto baseTick(void) -> void;
 public:
 	virtual auto onTick(void) -> void {};
@@ -22,5 +24,5 @@ public:
 	virtual auto onDisable(void) -> void {};
 public:
 	virtual auto onRender(MinecraftUIRenderContext*) -> void {};
-	virtual auto onKey(uint64_t, bool) -> void {};
+	virtual auto onKey(uint64_t, bool, bool*) -> void {};
 };
