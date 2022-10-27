@@ -12,7 +12,7 @@ Module::Module(Category* c, std::string n) {
 
 auto Module::baseTick(void) -> void {
 
-	if (this->isEnabled != this->wasEnabled) {
+	if (this->wasEnabled != this->isEnabled) {
 
 		this->wasEnabled = this->isEnabled;
 
