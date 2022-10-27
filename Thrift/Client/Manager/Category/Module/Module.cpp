@@ -16,6 +16,9 @@ auto Module::baseTick(void) -> void {
 
 		this->wasEnabled = this->isEnabled;
 
+		if (this->debugState)
+			Utils::debugOutput("[ " + this->category->name + " : " + this->name + " ] " + (this->isEnabled ? "Enabled" : "Disabled"));
+
 		if (this->isEnabled)
 			this->onEnable();
 		else
