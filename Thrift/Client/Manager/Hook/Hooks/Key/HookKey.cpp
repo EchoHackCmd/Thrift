@@ -10,6 +10,8 @@ Key _Key;
 
 auto KeyHookCallback(uint64_t key, bool isDown) -> void {
 
+	bool cancel = false;
+
 	if (kMgr != nullptr) {
 
 		auto instance = Minecraft::getClientInstance();
@@ -24,7 +26,7 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
 						mod->isEnabled = !mod->isEnabled;
 
 				if (mod->isEnabled)
-					mod->onKey(key, isDown);
+					mod->onKey(key, isDown, &cancel);
 
 			};
 
@@ -32,7 +34,8 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
 
 	};
 
-	_Key(key, isDown);
+	if(!cancel)
+		_Key(key, isDown);
 
 };
 
