@@ -18,4 +18,9 @@ private:
 private:
 	int indexCat = 0, indexMod = 0;
 	bool selectedCat = false, selectedMod = false;
+private:
+	auto reachOff(float*, float, float) -> void;
+private:
+	float catAnimOff = 0.f, modAnimOff = 0.f;
+	float animModifier = 0.2f;
 };
