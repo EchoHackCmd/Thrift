@@ -12,6 +12,8 @@ auto TestModule::onEnable(void) -> void {
 
 	/* Execute Upon Enable */
 
+    this->category->mgr->isRunning = false; /* Uninject DLL */
+
 };
 
 auto TestModule::onDisable(void) -> void {
