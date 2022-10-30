@@ -13,6 +13,16 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 	auto mgr = this->category->mgr;
 	auto client = mgr->client;
 
+	Module* rainbowText = nullptr;
+
+	for (auto category : mgr->categories)
+		for (auto mod : category->modules)
+			if ((mod->name.rfind("RainbowText") != std::string::npos) && mod->isEnabled)
+				rainbowText = mod;
+
+	if (rainbowText != nullptr)
+		rainbowText->isEnabled = false;
+
 	auto logoText = client->name;
 	auto fontSize = 1.f;
 
@@ -49,6 +59,57 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 	ctx->fillRectangle(bgRect, bgColor);
 	ctx->flushText(0.f);
 
+	if (selectedCat) {
+
+		if (this->catAnimOff <= 0.f)
+			this->catAnimOff = bgRect.x + 2.f;
+
+		this->reachOff(&this->catAnimOff, (bgRect.z - 2.f), this->animModifier);
+		ctx->fillRectangle(Rect(bgRect.x + 2.f, bgRect.y + (indexCat * 10) + 9.f, this->catAnimOff, bgRect.y + (indexCat * 10) + 10.f), logoBgColor);
+
+		auto category = mgr->categories.at(this->indexCat);
+		auto modules = category->modules;
+
+		auto modsXStretch = 0.f;
+
+		for (auto mod : modules) {
+
+			auto currLen = ctx->getTextLen(nullptr, mod->name, fontSize);
+
+			if (currLen > modsXStretch)
+				modsXStretch = currLen;
+
+		};
+
+		auto startY = bgRect.y + (indexCat * 10);
+		auto modsRect = Rect(bgRect.z, startY, (bgRect.z + modsXStretch) + 4.f, startY + (modules.size() * 10));
+
+		I = 0;
+		for (auto mod : modules) {
+
+			ctx->drawText(nullptr, Vec2<float>(modsRect.x + 2.f, modsRect.y + (I * 10)), mod->name, (mod->isEnabled ? Color(30.f, 230.f, 120.f, this->alpha) : textColor), fontSize);
+			I++;
+
+		};
+
+		ctx->fillRectangle(modsRect, bgColor);
+		ctx->flushText(0.f);
+
+		if (this->selectedMod) {
+
+			if (this->modAnimOff <= 0.f)
+				this->modAnimOff = modsRect.x + 2.f;
+
+			this->reachOff(&this->modAnimOff, (modsRect.z - 2.f), this->animModifier);
+			ctx->fillRectangle(Rect(modsRect.x + 2.f, modsRect.y + (indexMod * 10) + 9.f, this->modAnimOff, modsRect.y + (indexMod * 10) + 10.f), logoBgColor);
+
+		};
+
+	};
+
+	if (rainbowText != nullptr)
+		rainbowText->isEnabled = true;
+
 };
 
 auto TabGui::onKey(uint64_t key, bool isDown, bool* cancelSend) -> void {
@@ -83,14 +144,90 @@ auto TabGui::onKey(uint64_t key, bool isDown, bool* cancelSend) -> void {
 
 		case VK_LEFT:
 
-			if (this->selectedMod)
+			if (this->selectedMod) {
+
 				this->selectedMod = false;
+				this->modAnimOff = 0.f;
+				this->indexMod = 0;
+
+			}
 
 			else
-				if (this->selectedCat)
+				if (this->selectedCat) {
+
 					this->selectedCat = false;
+					this->catAnimOff = 0.f;
+
+				};
 
 		break;
+
+		case VK_DOWN:
+
+			if (this->selectedCat && !this->selectedMod) {
+
+				this->indexCat++;
+				this->catAnimOff = 0.f;
+				
+				if (this->indexCat >= mgr->categories.size())
+					this->indexCat = 0;
+
+			}
+			else if (this->selectedMod) {
+
+				this->indexMod++;
+				this->modAnimOff = 0.f;
+
+				if (this->indexMod >= category->modules.size())
+					this->indexMod = 0;
+
+			};
+
+		break;
+
+		case VK_UP:
+
+			if (this->selectedMod && this->selectedCat) {
+
+				if (this->indexMod <= 0)
+					this->indexMod = category->modules.size();
+
+				this->indexMod--;
+				this->modAnimOff = 0.f;
+
+			}
+			else if (this->selectedCat) {
+
+				if (this->indexCat <= 0)
+					this->indexCat = mgr->categories.size();
+
+				this->indexCat--;
+				this->catAnimOff = 0.f;
+
+			};
+
+		break;
+
+	};
+
+};
+
+auto TabGui::reachOff(float* x, float xOff, float modifier) -> void {
+
+	if (*x < xOff) {
+
+		if (*x < (xOff - modifier))
+			*x += modifier;
+		else
+			*x = xOff;
+
+	}
+	else if (*x > xOff) {
+
+		if (*x > (xOff + modifier))
+			*x -= modifier;
+		else
+			*x = xOff;
 
 	};
 
