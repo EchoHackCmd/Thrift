@@ -1,34 +1,39 @@
 #include "HookClientInstance.h"
 
 #include "../../../Category/Module/Module.h"
+
 #include "../../../Manager.h"
+#include "../../../../Client.h"
 
 typedef void (__thiscall* RenderContext)(void*, MinecraftUIRenderContext*);
 RenderContext _RenderContext;
 
 Manager* rndrMgr = nullptr;
 
-typedef __int64(__thiscall* RenderDrawText)(MinecraftUIRenderContext*, Font*, const float*, std::string*, const float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*);
+typedef __int64(__thiscall* RenderDrawText)(MinecraftUIRenderContext*, Font*, float*, std::string*, float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*);
 RenderDrawText _RenderDrawText;
 
-float rcolors[4];
+auto RenderDrawTextCallback(MinecraftUIRenderContext* ctx, Font* font, float* pos, std::string* text, float* color, float alpha, unsigned int textAlignment, const TextMeasureData* textMeasureData, const CaretMeasureData* caretMeasureData) -> __int64 {
 
-auto RenderDrawTextCallback(MinecraftUIRenderContext* ctx, Font* font, const float* pos, std::string* text, const float* color, float alpha, unsigned int textAlignment, const TextMeasureData* textMeasureData, const CaretMeasureData* caretMeasureData) -> __int64 {
+	if (rndrMgr != nullptr) {
 
-	if (rcolors[3] < 1) {
+		auto client = rndrMgr->client;
 
-		rcolors[0] = 0.2f;
-		rcolors[1] = 0.2f;
-		rcolors[2] = 1.f;
-		rcolors[3] = 1;
+		if (text->rfind("©Mojang AB") != std::string::npos)
+			*text = std::string(client->name);
+
+		for (auto category : rndrMgr->categories) {
+
+			for (auto mod : category->modules) {
+
+				if (mod->isEnabled)
+					mod->onDrawText(ctx, font, pos, text, color, alpha, textAlignment, textMeasureData, caretMeasureData);
+
+			};
+
+		};
 
 	};
-
-	Utils::ApplyRainbow(rcolors, 0.00005f);
-	color = rcolors;
-
-	if (text->rfind("©Mojang AB") != std::string::npos)
-		*text = std::string("Thrift Client");
 
 	return _RenderDrawText(ctx, font, pos, text, color, alpha, textAlignment, textMeasureData, caretMeasureData);
 
