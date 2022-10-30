@@ -71,6 +71,31 @@ auto Utils::findSig(const char* szSignature) -> unsigned long long {
 
 };
 
+auto Utils::findMultiLvlPtr(uintptr_t baseAddr, std::vector<unsigned int> offsets) -> uintptr_t* {
+
+	auto hwnd = GetModuleHandle(L"Minecraft.Windows.exe");
+
+	auto ptr = (uintptr_t)(hwnd)+baseAddr;
+	auto i = 0;
+
+	do {
+
+		if (*(uintptr_t*)ptr + offsets[i] == offsets[i] || *(uintptr_t*)ptr + offsets[i] > 0xFFFFFFFFFFFF)
+			break;
+
+		ptr = *(uintptr_t*)ptr + offsets[i];
+
+		if (ptr == NULL)
+			break;
+
+		i++;
+
+	} while (i < offsets.size());
+
+	return (i == offsets.size() ? (uintptr_t*)ptr : nullptr);
+
+};
+
 auto Utils::getRoamPath(void) -> std::string {
 
 	char* path = NULL;
