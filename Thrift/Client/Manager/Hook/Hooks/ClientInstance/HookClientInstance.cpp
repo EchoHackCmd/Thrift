@@ -24,7 +24,7 @@ auto RenderDrawTextCallback(MinecraftUIRenderContext* ctx, Font* font, const flo
 
 	};
 
-	Utils::ApplyRainbow(rcolors, 0.0001f);
+	Utils::ApplyRainbow(rcolors, 0.00005f);
 	color = rcolors;
 
 	if (text->rfind("©Mojang AB") != std::string::npos)
