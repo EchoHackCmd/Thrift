@@ -8,9 +8,54 @@ RenderContext _RenderContext;
 
 Manager* rndrMgr = nullptr;
 
+typedef __int64(__thiscall* RenderDrawText)(MinecraftUIRenderContext*, Font*, const float*, std::string*, const float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*);
+RenderDrawText _RenderDrawText;
+
+float rcolors[4];
+
+auto RenderDrawTextCallback(MinecraftUIRenderContext* ctx, Font* font, const float* pos, std::string* text, const float* color, float alpha, unsigned int textAlignment, const TextMeasureData* textMeasureData, const CaretMeasureData* caretMeasureData) -> __int64 {
+
+	if (rcolors[3] < 1) {
+
+		rcolors[0] = 0.2f;
+		rcolors[1] = 0.2f;
+		rcolors[2] = 1.f;
+		rcolors[3] = 1;
+
+	};
+
+	Utils::ApplyRainbow(rcolors, 0.0001f);
+	color = rcolors;
+
+	if (text->rfind("©Mojang AB") != std::string::npos)
+		*text = std::string("Thrift Client");
+
+	return _RenderDrawText(ctx, font, pos, text, color, alpha, textAlignment, textMeasureData, caretMeasureData);
+
+};
+
 auto RenderContextCallback(void* a1, MinecraftUIRenderContext* ctx) -> void {
 
 	if (rndrMgr != nullptr) {
+
+		if (_RenderDrawText == nullptr) {
+
+			auto VTable = *(uintptr_t**)ctx;
+
+			if (MH_CreateHook((void*)VTable[5], &RenderDrawTextCallback, reinterpret_cast<LPVOID*>(&_RenderDrawText)) != MH_OK) {
+				
+				Utils::debugOutput("[Render Draw Text] Failed to create hook!");
+				_RenderDrawText = (RenderDrawText)Utils::getDll();
+
+			}
+			else {
+
+				MH_EnableHook((void*)VTable[5]);
+				Utils::debugOutput("[Render Draw Text] Successfully hooked!");
+
+			};
+
+		};
 
 		for (auto category : rndrMgr->categories) {
 
@@ -44,7 +89,8 @@ auto Hook_ClientInstance::init(void) -> StatusData {
 
 	if(MH_EnableHook((void*)sig) != MH_OK)
 		return StatusData(MethodStatus::Error, "[ClientInstance Hook] Failed to enable hook!");
-
-	return StatusData(MethodStatus::Success, "[ClientInstance Hook] Successfully hooked Client Instance!");
+	
+	
+	return StatusData(MethodStatus::Success, "[ClientInstance Hook] Successfully hooked!");
 
 };
