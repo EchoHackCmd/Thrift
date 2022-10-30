@@ -68,6 +68,8 @@ auto Manager::initHooks(void) -> StatusData {
 };
 
 #include "Category/Module/Modules/Visual/TabGui.h"
+#include "Category/Module/Modules/Visual/RainbowText.h"
+
 #include "Category/Module/Modules/Other/TestModule.h"
 
 auto Manager::initCategories(void) -> void {
@@ -107,6 +109,7 @@ auto Manager::initCategories(void) -> void {
 
 	
 	new TabGui(visuals);
+	new RainbowText(visuals);
 
 
 	/* World */
