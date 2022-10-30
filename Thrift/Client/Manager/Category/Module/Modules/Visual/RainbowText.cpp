@@ -11,8 +11,9 @@ auto RainbowText::onDrawText(MinecraftUIRenderContext* ctx, Font* font, float* p
 
 	};
 
-	Utils::ApplyRainbow(rcolors, 0.00005f);
+	Utils::ApplyRainbow(rcolors, 0.00015f);
 	
 	for (auto I = 0; I < 4; I++)
 		color[I] = rcolors[I];
+
 };
