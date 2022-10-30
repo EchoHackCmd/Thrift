@@ -144,6 +144,7 @@
     <ClCompile Include="Client\Manager\Category\Category.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Module.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Other\TestModule.cpp" />
+    <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\TabGui.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hook.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Client\Manager\Category\Category.h" />
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Other\TestModule.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\TabGui.h" />
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.h" />
