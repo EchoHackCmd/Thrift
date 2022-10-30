@@ -58,7 +58,7 @@ public:
     };
 public:
     auto get(void) -> float* {
-        float v[] = { this->r, this->g, this->b };
+        float v[] = { this->r, this->g, this->b, this->a };
         return v;
     };
 };
@@ -75,8 +75,9 @@ public:
     virtual auto drawDebugText(const float*, std::string*, const float*, float, unsigned int, float*, void*) -> __int64;
     virtual auto drawText(Font*, const float*, std::string*, const float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*) -> __int64;
     virtual auto flushText(float) -> void;
+    virtual auto drawImage(std::string*, Vec2<float>*, Vec2<float>*, Vec2<float>*, Vec2<float>*, bool, const float*, float) -> __int64;
 private:
-    virtual auto Function7(void) -> void;
+    //virtual auto Function7(void) -> void;
     virtual auto Function8(void) -> void;
     virtual auto Function9(void) -> void;
     virtual auto Function10(void) -> void;
