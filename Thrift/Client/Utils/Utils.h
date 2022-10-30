@@ -44,6 +44,10 @@ public:
 		std::uniform_real_distribution<>dis(min, max);
 		return dis(gen);
 	};
+public:
+	static auto ColorConvertRGBtoHSV(float, float, float, float&, float&, float&) -> void;
+	static auto ColorConvertHSVtoRGB(float, float, float, float&, float&, float&) -> void;
+	static auto ApplyRainbow(float*, float) -> void;
 };
 
 template<typename T>
