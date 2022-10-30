@@ -29,6 +29,7 @@ private:
 public:
 	static auto getDll(void)->HMODULE;
 	static auto findSig(const char* szSignature)->unsigned long long;
+	static auto findMultiLvlPtr(uintptr_t, std::vector<unsigned int>)->uintptr_t*;
 public:
 	static auto getRoamPath(void)->std::string;
 public:
