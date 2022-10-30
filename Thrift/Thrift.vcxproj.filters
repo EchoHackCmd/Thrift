@@ -57,6 +57,9 @@
     <ClCompile Include="Client\Manager\Hook\Hooks\Key\HookKey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\TabGui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\TabGui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
