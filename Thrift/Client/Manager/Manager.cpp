@@ -45,6 +45,7 @@ Manager::Manager(Client* c) {
 
 };
 
+#include "Hook/Hooks/LoopbackPacketSender/HookLoopbackPacketSender.h"
 #include "Hook/Hooks/ClientInstance/HookClientInstance.h"
 #include "Hook/Hooks/Key/HookKey.h"
 
@@ -53,6 +54,7 @@ auto Manager::initHooks(void) -> StatusData {
 	if (MH_Initialize() != MH_OK)
 		return StatusData(MethodStatus::Error, "Failed to Initialize MinHook");
 
+	new Hook_LoopbackPacketSender(this);
 	new Hook_ClientInstance(this);
 	new Hook_Key(this);
 
