@@ -32,3 +32,15 @@ auto TestModule::onKey(uint64_t key, bool isDown, bool* cancelSend) -> void {
     /* Execute Upon Keyboard Press */
 
 };
+
+auto TestModule::onPacket(LoopbackPacketSender* _this, Packet* packet, bool* cancel) -> void {
+
+    /*std::ostringstream o;
+    o << std::hex << (uintptr_t)packet->VTable - (uintptr_t)(GetModuleHandleA("Minecraft.Windows.exe"));
+
+    Utils::debugOutput("Minecraft.Windows.exe+" + o.str());*/
+
+    if (packet->VTable == TextPacket().VTable)
+        Utils::debugOutput("Text Packet!");
+
+};
