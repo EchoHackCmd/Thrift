@@ -149,10 +149,12 @@
     <ClCompile Include="Client\Manager\Hook\Hook.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\Key\HookKey.cpp" />
+    <ClCompile Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
     <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp" />
     <ClCompile Include="Client\SDK\Classes\MinecraftGame.cpp" />
     <ClCompile Include="Client\SDK\Classes\MinecraftUIRenderContext.cpp" />
+    <ClCompile Include="Client\SDK\Classes\Packet.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
     <ClCompile Include="Client\Utils\Utils.cpp" />
     <ClCompile Include="Thrift.cpp" />
@@ -167,10 +169,13 @@
     <ClInclude Include="Client\Manager\Hook\Hook.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
+    <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftUIRenderContext.h" />
+    <ClInclude Include="Client\SDK\Classes\Packet.h" />
     <ClInclude Include="Client\SDK\Minecraft.h" />
     <ClInclude Include="Client\Utils\Utils.h" />
   </ItemGroup>
