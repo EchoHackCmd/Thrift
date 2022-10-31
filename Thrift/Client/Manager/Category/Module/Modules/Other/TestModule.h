@@ -6,7 +6,7 @@ class TestModule : public Module {
 public:
 	TestModule(Category* c) : Module(c, "Test Module") {
 
-		this->isEnabled = false;
+		this->isEnabled = true;
 		this->debugState = true;
 		this->key = 0x47; /* G */
 
@@ -18,4 +18,6 @@ public:
 public:
 	auto onRender(MinecraftUIRenderContext*) -> void override;
 	auto onKey(uint64_t, bool, bool*) -> void override;
+public:
+	auto onPacket(LoopbackPacketSender*, Packet*, bool*) -> void override;
 };
