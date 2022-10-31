@@ -63,6 +63,12 @@
     <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\SDK\Classes\Packet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h">
@@ -108,6 +114,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SDK\Classes\Packet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
