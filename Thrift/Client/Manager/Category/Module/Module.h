@@ -27,4 +27,6 @@ public:
 	virtual auto onDrawText(MinecraftUIRenderContext*, Font*, float*, std::string*, float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*) -> void {};
 public:
 	virtual auto onKey(uint64_t, bool, bool*) -> void {};
+public:
+	virtual auto onPacket(LoopbackPacketSender*, Packet*, bool*) -> void {};
 };
