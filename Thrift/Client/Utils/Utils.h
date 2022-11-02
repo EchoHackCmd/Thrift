@@ -11,6 +11,53 @@
 #include <vector>
 #include <string>
 
+#include <type_traits>
+
+template <typename F> auto IIFE(F f) { return f(); }
+
+template <class T> struct remove_cvref { typedef std::remove_cv_t<std::remove_reference_t<T>> type; };
+
+template <class T> using remove_cvref_t = typename remove_cvref<T>::type;
+
+template <typename Ret, typename Type> Ret& direct_access(Type* type, size_t offset) {
+	union {
+		size_t raw;
+		Type* source;
+		Ret* target;
+	} u;
+	u.source = type;
+	u.raw += offset;
+	return *u.target;
+}
+
+#define AS_FIELD(type, name, fn) __declspec(property(get = fn)) type name
+#define DEF_FIELD_RW(type, name) __declspec(property(get = get##name, put = set##name)) type name
+
+#define FAKE_FIELD(type, name)                                                                                       \
+AS_FIELD(type, name, get##name);                                                                                     \
+type get##name()
+
+#define BUILD_ACCESS(type, name, offset)                                                                             \
+AS_FIELD(type, name, get##name);                                                                                     \
+type get##name() const { return direct_access<type>(this, offset); }
+
+#include <wrl.h>
+#include <dxgi.h>
+#include <d3d11.h>
+#include <d3d12.h>
+#include <d2d1_3.h>
+#include <dxgi1_4.h>
+#include <dwrite_3.h>
+#include <initguid.h>
+#include <d3d11on12.h>
+
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3d12.lib")
+#pragma comment(lib, "dwrite.lib")
+
+#include "../Kiero/Kiero.h"
+
 #define INRANGE(x,a,b)   (x >= a && x <= b)
 #define GET_BYTE( x )    (GET_BITS(x[0]) << 4 | GET_BITS(x[1]))
 #define GET_BITS( x )    (INRANGE((x&(~0x20)),'A','F') ? ((x&(~0x20)) - 'A' + 0xa) : (INRANGE(x,'0','9') ? x - '0' : 0))
