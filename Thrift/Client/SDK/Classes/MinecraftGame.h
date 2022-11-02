@@ -1,9 +1,11 @@
 #pragma once
 
+#include "../../Utils/Utils.h"
+
 class Font;
 
 class MinecraftGame {
 public:
-	auto canUseKeys(void)->bool;
-	auto mcFont(void)->Font*;
+	BUILD_ACCESS(bool, canUseKeys, 0xD8);
+	BUILD_ACCESS(Font*, mcfont, 0xE58);
 };
