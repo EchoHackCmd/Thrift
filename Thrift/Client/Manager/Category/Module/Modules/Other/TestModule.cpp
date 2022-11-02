@@ -6,11 +6,26 @@ auto TestModule::onTick(void) -> void {
 
     /* Execute Every Thread Tick */
 
+    auto instance = Minecraft::getClientInstance();
+    auto player = (instance != nullptr ? instance->LocalPlayer : nullptr);
+
+    if (player == nullptr)
+        return;
+
+    if (!player->isOnGround)
+        Utils::debugOutput("!");
+
 };
 
 auto TestModule::onEnable(void) -> void {
 
 	/* Execute Upon Enable */
+
+    auto instance = Minecraft::getClientInstance();
+    auto player = (instance != nullptr ? instance->LocalPlayer : nullptr);
+
+    if (player == nullptr)
+        return;
 
 };
 
