@@ -173,11 +173,13 @@
     <ClInclude Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\SwapChain\HookSwapChain.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
+    <ClInclude Include="Client\SDK\Classes\Actor.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
     <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftGame.h" />
     <ClInclude Include="Client\SDK\Classes\MinecraftUIRenderContext.h" />
     <ClInclude Include="Client\SDK\Classes\Packet.h" />
+    <ClInclude Include="Client\SDK\Classes\Player.h" />
     <ClInclude Include="Client\SDK\Minecraft.h" />
     <ClInclude Include="Client\Utils\Utils.h" />
   </ItemGroup>
