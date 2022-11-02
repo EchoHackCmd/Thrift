@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Client\Client.cpp" />
+    <ClCompile Include="Client\Kiero\Kiero.cpp" />
     <ClCompile Include="Client\Manager\Category\Category.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Module.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Other\TestModule.cpp" />
@@ -150,9 +151,8 @@
     <ClCompile Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\Key\HookKey.cpp" />
     <ClCompile Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.cpp" />
+    <ClCompile Include="Client\Manager\Hook\Hooks\SwapChain\Hook_SwapChain.cpp" />
     <ClCompile Include="Client\Manager\Manager.cpp" />
-    <ClCompile Include="Client\SDK\Classes\ClientInstance.cpp" />
-    <ClCompile Include="Client\SDK\Classes\MinecraftGame.cpp" />
     <ClCompile Include="Client\SDK\Classes\MinecraftUIRenderContext.cpp" />
     <ClCompile Include="Client\SDK\Classes\Packet.cpp" />
     <ClCompile Include="Client\SDK\Minecraft.cpp" />
@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client\Client.h" />
+    <ClInclude Include="Client\Kiero\Kiero.h" />
     <ClInclude Include="Client\Manager\Category\Category.h" />
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Other\TestModule.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Client\Manager\Hook\Hooks\ClientInstance\HookClientInstance.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\Key\HookKey.h" />
     <ClInclude Include="Client\Manager\Hook\Hooks\LoopbackPacketSender\HookLoopbackPacketSender.h" />
+    <ClInclude Include="Client\Manager\Hook\Hooks\SwapChain\HookSwapChain.h" />
     <ClInclude Include="Client\Manager\Manager.h" />
     <ClInclude Include="Client\SDK\Classes\ClientInstance.h" />
     <ClInclude Include="Client\SDK\Classes\LoopbackPacketSender.h" />
