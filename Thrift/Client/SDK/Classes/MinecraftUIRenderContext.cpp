@@ -5,8 +5,8 @@ auto MinecraftUIRenderContext::drawText(Font* font, Vec2<float> textPos, std::st
 	if (font == nullptr) {
 
 		auto instance = this->clientInstance;
-		auto mcgame = (instance != nullptr ? instance->getMcGame() : nullptr);
-		font = (mcgame != nullptr ? mcgame->mcFont() : nullptr);
+		auto mcgame = (instance != nullptr ? instance->MinecraftGame : nullptr);
+		font = (mcgame != nullptr ? mcgame->mcfont : nullptr);
 
 	};
 
@@ -26,8 +26,8 @@ auto MinecraftUIRenderContext::getTextLen(Font* font, std::string text, float fo
 	if (font == nullptr) {
 
 		auto instance = this->clientInstance;
-		auto mcgame = (instance != nullptr ? instance->getMcGame() : nullptr);
-		font = (mcgame != nullptr ? mcgame->mcFont() : nullptr);
+		auto mcgame = (instance != nullptr ? instance->MinecraftGame : nullptr);
+		font = (mcgame != nullptr ? mcgame->mcfont : nullptr);
 
 	};
 
