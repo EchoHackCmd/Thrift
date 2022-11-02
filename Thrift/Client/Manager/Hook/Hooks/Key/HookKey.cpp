@@ -15,13 +15,13 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
 	if (kMgr != nullptr) {
 
 		auto instance = Minecraft::getClientInstance();
-		auto mcgame = (instance != nullptr ? instance->getMcGame() : nullptr);
+		auto mcgame = (instance != nullptr ? instance->MinecraftGame : nullptr);
 
 		for (auto category : kMgr->categories) {
 
 			for (auto mod : category->modules) {
 
-				if (isDown && mcgame != nullptr && mcgame->canUseKeys())
+				if (isDown && mcgame != nullptr && mcgame->canUseKeys)
 					if (mod->key == key)
 						mod->isEnabled = !mod->isEnabled;
 
