@@ -71,6 +71,8 @@ auto Manager::initHooks(void) -> StatusData {
 
 };
 
+#include "Category/Module/Modules/Movement/AirJump.h"
+
 #include "Category/Module/Modules/Visual/TabGui.h"
 #include "Category/Module/Modules/Visual/RainbowText.h"
 
@@ -98,6 +100,9 @@ auto Manager::initCategories(void) -> void {
 
 
 	/* Movement */
+	
+	
+	new AirJump(move);
 
 	
 	// WIP
