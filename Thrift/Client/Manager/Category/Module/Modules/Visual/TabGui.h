@@ -23,4 +23,6 @@ private:
 private:
 	float catAnimOff = 0.f, modAnimOff = 0.f;
 	float animModifier = 0.2f;
+public:
+	bool rainbowText = false;
 };
