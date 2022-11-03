@@ -15,13 +15,17 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 
 	Module* rainbowText = nullptr;
 
-	for (auto category : mgr->categories)
-		for (auto mod : category->modules)
-			if ((mod->name.rfind("RainbowText") != std::string::npos) && mod->isEnabled)
-				rainbowText = mod;
+	if (!this->rainbowText) {
 
-	if (rainbowText != nullptr)
-		rainbowText->isEnabled = false;
+		for (auto category : mgr->categories)
+			for (auto mod : category->modules)
+				if ((mod->name.rfind("RainbowText") != std::string::npos) && mod->isEnabled)
+					rainbowText = mod;
+
+		if (rainbowText != nullptr)
+			rainbowText->isEnabled = false;
+
+	};
 
 	auto logoText = client->name;
 	auto fontSize = 1.f;
