@@ -144,6 +144,7 @@
     <ClCompile Include="Client\Kiero\Kiero.cpp" />
     <ClCompile Include="Client\Manager\Category\Category.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Module.cpp" />
+    <ClCompile Include="Client\Manager\Category\Module\Modules\Movement\AirJump.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Other\TestModule.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.cpp" />
     <ClCompile Include="Client\Manager\Category\Module\Modules\Visual\TabGui.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Client\Kiero\Kiero.h" />
     <ClInclude Include="Client\Manager\Category\Category.h" />
     <ClInclude Include="Client\Manager\Category\Module\Module.h" />
+    <ClInclude Include="Client\Manager\Category\Module\Modules\Movement\AirJump.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Other\TestModule.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\RainbowText.h" />
     <ClInclude Include="Client\Manager\Category\Module\Modules\Visual\TabGui.h" />
