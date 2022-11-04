@@ -91,7 +91,7 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 		I = 0;
 		for (auto mod : modules) {
 
-			ctx->drawText(nullptr, Vec2<float>(modsRect.x + 2.f, modsRect.y + (I * 10)), mod->name, (mod->isEnabled ? Color(30.f, 230.f, 120.f, this->alpha) : textColor), fontSize);
+			ctx->drawText(nullptr, Vec2<float>(modsRect.x + 2.f, modsRect.y + (I * 10)), mod->name, ((mod->isEnabled || rainbowText != nullptr && rainbowText == mod) ? Color(30.f, 230.f, 120.f, this->alpha) : textColor), fontSize);
 			I++;
 
 		};
