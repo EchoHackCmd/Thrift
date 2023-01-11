@@ -47,8 +47,6 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 
 	ctx->drawText(nullptr, startPos, logoText, logoTextColor, fontSize);
 	ctx->fillRectangle(logoRect, logoBgColor);
-	ctx->flushText(0.f);
-
 
 	auto I = 0;
 	for (auto category : mgr->categories) {
@@ -61,7 +59,6 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 	auto bgRect = Rect(logoRect.x, logoRect.w, logoRect.z, logoRect.w + (mgr->categories.size() * 10));
 	
 	ctx->fillRectangle(bgRect, bgColor);
-	ctx->flushText(0.f);
 
 	if (selectedCat) {
 
@@ -97,7 +94,6 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 		};
 
 		ctx->fillRectangle(modsRect, bgColor);
-		ctx->flushText(0.f);
 
 		if (this->selectedMod) {
 
@@ -113,7 +109,8 @@ auto TabGui::onRender(MinecraftUIRenderContext* ctx) -> void {
 
 	if (rainbowText != nullptr)
 		rainbowText->isEnabled = true;
-
+	
+	ctx->flushText(0.f);
 };
 
 auto TabGui::onKey(uint64_t key, bool isDown, bool* cancelSend) -> void {
