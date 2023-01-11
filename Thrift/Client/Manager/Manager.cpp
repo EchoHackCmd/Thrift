@@ -135,11 +135,10 @@ auto Manager::initCategories(void) -> void {
 };
 
 auto Manager::uninjectDLL(void) -> void {
-
-	MH_Uninitialize();
-	Sleep(1000);
-
+	DisableThreadLibraryCalls(Utils::getDll());
 	MH_DisableHook(MH_ALL_HOOKS);
-	FreeLibraryAndExitThread(Utils::getDll(), 1);
-
+	MH_RemoveHook(MH_ALL_HOOKS);
+	FreeLibraryAndExitThread(Utils::getDll(), 0);
+	Sleep(1000);
+	MH_Uninitialize();
 };

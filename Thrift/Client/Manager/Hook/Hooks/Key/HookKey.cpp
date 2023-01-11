@@ -13,6 +13,7 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
 	bool cancel = false;
 
 	if (kMgr != nullptr) {
+		if (key == VK_END) kMgr->isRunning = false;
 
 		auto instance = Minecraft::getClientInstance();
 		auto mcgame = (instance != nullptr ? instance->MinecraftGame : nullptr);
