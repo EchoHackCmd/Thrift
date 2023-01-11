@@ -71,7 +71,7 @@ private:
 public:
     virtual auto getLineLength(Font*, std::string*, float, bool) -> float;
     virtual auto getTextAlpha(void) -> float;
-    virtual auto setTextAlpa(float) -> void;
+    virtual auto setTextAlpha(float) -> void;
     virtual auto drawDebugText(const float*, std::string*, const float*, float, unsigned int, float*, void*) -> __int64;
     virtual auto drawText(Font*, const float*, std::string*, const float*, float, unsigned int, const TextMeasureData*, const CaretMeasureData*) -> __int64;
     virtual auto flushText(float) -> void;
