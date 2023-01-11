@@ -4,7 +4,6 @@
 
 class LoopbackPacketSender {
 public:
-public:
 	virtual ~LoopbackPacketSender(); // constructor
 	virtual void send(void* Packet);
 	virtual void sendToServer(void* Packet);
