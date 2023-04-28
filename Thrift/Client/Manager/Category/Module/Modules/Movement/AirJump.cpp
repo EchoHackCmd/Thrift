@@ -6,5 +6,5 @@ auto AirJump::onTick(void) -> void {
 	auto player = (instance != nullptr ? instance->LocalPlayer : nullptr);
 
 	if (player != nullptr)
-		player->isOnGround = true;
+		player->getMovementProxy()->setOnGround(true);
 }

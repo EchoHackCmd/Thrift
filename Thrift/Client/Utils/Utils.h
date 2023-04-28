@@ -97,6 +97,11 @@ public:
 	static auto ColorConvertRGBtoHSV(float, float, float, float&, float&, float&) -> void;
 	static auto ColorConvertHSVtoRGB(float, float, float, float&, float&, float&) -> void;
 	static auto ApplyRainbow(float*, float) -> void;
+	template <unsigned int IIdx, typename TRet, typename... TArgs>
+	static auto CallVFunc(void* thisptr, TArgs... argList) -> TRet {
+		using Fn = TRet(__thiscall*)(void*, decltype(argList)...);
+		return (*static_cast<Fn**>(thisptr))[IIdx](thisptr, argList...);
+	}
 };
 
 template<typename T>
